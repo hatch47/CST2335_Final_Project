@@ -57,7 +57,7 @@ public class Welcome extends AppCompatActivity {
 
 
 
-    public void onBBCNewsClick(View view) {
+    public void onTheGuardianClick(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
