@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">CST2335_Final_Project</string>
+    <string name="app_name">AndroidLabs</string>
+    <string name="hello_world">Hello World</string>
+    <string name="button_text">I\m a button!</string>
+    <string name="toast_message">Label has been updated</string>
+    <string name="chkbox_on_off">The checkbox is now</string>
+    <string name="name_saved">Your name has been saved</string>
+    <string name="next">next</string>
+    <string name="welcome">Welcome</string>
+    <string name="dont_call_me_that">Don\'t call me that</string>
+    <string name="thank_you">Thank You</string>
+    <string name="add">Add</string>
+    <string name="type_here">Type Here</string>
+    <string name="urgent">Urgent</string>
+    <string name="delete_this_message">Do you want to delete this?</string>
+    <string name="selected_row">The selected row is:</string>
+    <string name="bbc_news">BBC News</string>
+    <string name="user">User</string>
+    <string name="name">Enter Your Name</string>
+    <string name="save">Save</string>
+    <string name="info">Click USER to edit your name</string>
+
 </resources>

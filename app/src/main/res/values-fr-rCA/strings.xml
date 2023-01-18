@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidLabs</string>
+    <string name="hello_world">Bonjour le monde</string>
+    <string name="button_text">Je suis un bouton!</string>
+    <string name="toast_message">l étiquette a été mise à jour</string>
+    <string name="chkbox_on_off">La case à cocher est maintenant</string>
+    <string name="name_saved">Votre nom a été enregistré</string>
+    <string name="next">suivante</string>
+    <string name="welcome">Bienvenu</string>
+    <string name="dont_call_me_that">Ne m\'appelle pas comme ça</string>
+    <string name="thank_you">Merci</string>
+    <string name="add">ajouter</string>
+    <string name="type_here">écrivez ici</string>
+    <string name="urgent">Urgent</string>
+    <string name="delete_this_message">Voulez-vous supprimer ceci?</string>
+    <string name="selected_row">La ligne sélectionnée est:</string>
+    <string name="bbc_news">BBC Nouvelles</string>
+    <string name="user">Utilisateur</string>
+    <string name="name">Entrez votre nom</string>
+    <string name="save">Sauvegarder</string>
+    <string name="info">Cliquez sur USER pour modifier votre nom</string>
+
+
+</resources>
