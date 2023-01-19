@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class User extends AppCompatActivity {
@@ -16,26 +17,28 @@ public class User extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         getSupportActionBar().hide();
-
+        String welcome = getResources().getString(R.string.welcome);
         String saved = getResources().getString(R.string.name_saved);
+
+
+        // retrieve saved name
+        SharedPreferences sharedPreferences = getSharedPreferences("userName", MODE_PRIVATE);
+        String name = sharedPreferences.getString("name", "");
         EditText edit_text = findViewById(R.id.edit_text);
-
-
-        String name = getIntent().getStringExtra("text");
         edit_text.setText(name);
+    }
 
-        }
+
 
     // send users name to welcome
     protected void onPause() {
         super.onPause();
         EditText editText = findViewById(R.id.edit_text);
         String text = editText.getText().toString();
-        Intent intent = new Intent(this, Welcome.class);
-        intent.putExtra("text", text);
-        startActivity(intent);
-
-
+        SharedPreferences sharedPreferences = getSharedPreferences("userName", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("name", text);
+        editor.apply();
     }
 
     //toast and redirect to Welcome

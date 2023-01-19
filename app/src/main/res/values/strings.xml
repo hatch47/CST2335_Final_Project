@@ -19,5 +19,6 @@
     <string name="name">Enter Your Name</string>
     <string name="save">Save</string>
     <string name="info">Click USER to edit your name</string>
+    <string name="info2">Click The Guardian to browse articles</string>
 
 </resources>
