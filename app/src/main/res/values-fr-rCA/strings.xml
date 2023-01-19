@@ -21,6 +21,13 @@
     <string name="save">Sauvegarder</string>
     <string name="info">Cliquez sur USER pour modifier votre nom</string>
     <string name="info2">Cliquez sur The Guardian pour parcourir les articles</string>
+    <string name="about">Le Projet Final CST2735 a été développé en janvier 2023 par Cody Hatcher, étudiant au Collège Alonquin. L application est conçue pour rechercher des articles du journal The Guardian afin que l utilisateur puisse parcourir, ouvrir, Et enregistrer.</string>
 
+    <string name="version_number">1</string>
+    <string name="help">Aider</string>
+    <string name="what_to_do">Cliquez sur les boutons pour naviguer dans l application. Les boutons de navigation se trouvent en haut de votre écran.</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
 </resources>

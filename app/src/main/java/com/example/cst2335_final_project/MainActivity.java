@@ -1,9 +1,12 @@
 package com.example.cst2335_final_project;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -59,6 +62,20 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(result);
             // parse the JSON data and update the UI
         }
+    }
+
+    public void showDialog(View view) {
+        String help = getResources().getString(R.string.help);
+        String wtd = getResources().getString(R.string.what_to_do);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle(help);
+        builder.setMessage(wtd);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // do something here
+            }
+        });
+        builder.show();
     }
 
 

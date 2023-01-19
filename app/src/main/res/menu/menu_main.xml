@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <!-- Menu item that shows up as an icon in the toolbar -->
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title=""
+        app:showAsAction="always"
+        android:orderInCategory="1"
+        android:layout_gravity="center"
+
+
+        />
+
+    <!-- Menu item that shows up as an icon in the toolbar -->
+    <item
+        android:id="@+id/browse"
+        android:icon="@drawable/browse"
+        android:title=""
+        app:showAsAction="always"
+        android:orderInCategory="2"
+        android:layout_gravity="center"
+
+        />
+
+    <item
+        android:id="@+id/heart"
+        android:icon="@drawable/heart"
+        android:title=""
+        app:showAsAction="always"
+        android:orderInCategory="3"
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/user"
+        android:icon="@drawable/user"
+        android:title=""
+        app:showAsAction="always"
+        android:orderInCategory="4"
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/info"
+        android:icon="@drawable/info"
+        android:title=""
+        app:showAsAction="always"
+        android:orderInCategory="5"
+        android:layout_gravity="center"
+        />
+
+</menu>

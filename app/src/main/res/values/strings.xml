@@ -20,5 +20,15 @@
     <string name="save">Save</string>
     <string name="info">Click USER to edit your name</string>
     <string name="info2">Click The Guardian to browse articles</string>
+    <string name="about">
+    CST2335 Final Project was developed in January 2023 by Alonquin College student Cody Hatcher.
+    The app is designed to search articles from The Guardian newspaper for the user to browse, open,
+        and save.
+    </string>
 
+    <string name="version_number">1</string>
+    <string name="help">Help</string>
+    <string name="what_to_do">Click on buttons to navigate the app. The navigation buttons are on the top of your screen.</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

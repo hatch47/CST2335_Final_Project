@@ -1,14 +1,24 @@
 package com.example.cst2335_final_project;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 public class Welcome extends AppCompatActivity {
@@ -53,14 +63,6 @@ public class Welcome extends AppCompatActivity {
         textView.setText(welcome + " " + name + "!");
 
 
-        //set welcome + users name
-//        TextView textView = findViewById(R.id.text_view);
-//        String name = getIntent().getStringExtra("text");
-//        if (name == null || name.trim().isEmpty()) {
-//            textView.setText(welcome + "!");
-//        } else {
-//            textView.setText(welcome + " " + name + "!");
-//        }
 
 
     }
@@ -88,5 +90,27 @@ public class Welcome extends AppCompatActivity {
 
     }
 
+    //delete this button later
+    public void onTheClick(View view) {
+
+        Intent intent = new Intent(this, About.class);
+        startActivity(intent);
+
+    }
+
+
+    public void showDialog(View view) {
+        String help = getResources().getString(R.string.help);
+        String wtd = getResources().getString(R.string.what_to_do);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Welcome.this);
+        builder.setTitle(help);
+        builder.setMessage(wtd);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // do something here
+            }
+        });
+        builder.show();
+    }
 
 }
