@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Welcome"
-    android:id="@+id/root">
+    android:id="@+id/root"
+    android:elevation="5dp">
 
 
     <TextView
@@ -23,6 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.259" />
 
+
     <Button
         android:id="@+id/button_guardian"
         android:layout_width="228dp"
@@ -36,7 +38,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.404" />
+        app:layout_constraintVertical_bias="0.404"
+        android:elevation="5dp"/>
 
     <Button
         android:id="@+id/button_user"
@@ -50,159 +53,11 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56" />
-
-    <Button
-        android:id="@+id/button_2delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:onClick="onTheClick"
-        android:text="about button (delete later)"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.553"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.166" />
-
-<!--    <com.google.android.material.navigation.NavigationView-->
-<!--        android:id="@+id/navigationView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:menu="@menu/nav_menu"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        tools:layout_editor_absoluteX="1dp"-->
-<!--        >-->
-<!--        <androidx.appcompat.widget.Toolbar-->
-<!--            android:id="@+id/toolbar9"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="62dp"-->
-<!--            android:background="@color/white"-->
-<!--            android:minHeight="?attr/actionBarSize"-->
-<!--            android:theme="?attr/actionBarTheme"-->
-<!--            app:menu="@menu/nav_menu"-->
-<!--            />-->
-<!--    </com.google.android.material.navigation.NavigationView>-->
+        app:layout_constraintVertical_bias="0.56"
+        android:elevation="5dp"/>
 
 
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/bottomNavigationView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-
-
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.0"-->
-<!--        app:menu="@menu/nav_menu"-->
-<!--        tools:layout_editor_absoluteX="-26dp">-->
-
-<!--        <androidx.appcompat.widget.Toolbar-->
-<!--            android:id="@+id/toolbar9"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="62dp"-->
-<!--            android:layout_marginTop="652dp"-->
-<!--            android:background="@color/white"-->
-<!--            android:minHeight="?attr/actionBarSize"-->
-<!--            android:theme="?attr/actionBarTheme"-->
-<!--            app:menu="@menu/nav_menu"-->
-
-<!--            tools:ignore="MissingConstraints" />-->
-<!--    </com.google.android.material.bottomnavigation.BottomNavigationView>-->
-
-
-
-<!--    <androidx.drawerlayout.widget.DrawerLayout-->
-<!--        android:id="@+id/drawer_layout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:backgroundTint="@color/black">-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="vertical">-->
-
-<!--            <androidx.appcompat.widget.Toolbar-->
-<!--                android:id="@+id/toolbar"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-
-<!--                android:backgroundTint="@color/black"-->
-<!--                android:minHeight="?attr/actionBarSize"-->
-<!--                android:theme="?attr/actionBarTheme"-->
-<!--                app:title="@string/app_name" />-->
-
-<!--            <FrameLayout-->
-<!--                android:id="@+id/content_frame"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent" />-->
-
-<!--        </LinearLayout>-->
-
-<!--        <com.google.android.material.navigation.NavigationView-->
-<!--            android:id="@+id/nav_view"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_gravity="start"-->
-
-<!--            android:background="@color/black"-->
-<!--            android:backgroundTint="@color/black"-->
-<!--            app:menu="@menu/menu_main" />-->
-
-<!--    </androidx.drawerlayout.widget.DrawerLayout>-->
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-
-
-        app:itemIconTint="#000000"
-        app:itemTextColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001"
-        app:menu="@menu/menu_main">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar9"
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:layout_marginTop="652dp"
-
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:menu="@menu/menu_main"
-
-            tools:ignore="MissingConstraints" />
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
-    <androidx.drawerlayout.widget.DrawerLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <!-- Your content layout here -->
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-    </androidx.drawerlayout.widget.DrawerLayout>
-
-
-
+    <!--    copy here-->
     <ImageButton
         android:id="@+id/my_button"
         android:layout_width="40dp"
@@ -215,25 +70,59 @@
         app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96" />
+        app:layout_constraintVertical_bias="0.96"
+        android:elevation="5dp"/>
 
-
-<!--    <include-->
-<!--        layout="@layout/activity_base"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_width="match_parent"/>-->
-
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
+    <!--    navbar below-->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-
-        app:menu="@menu/side_menu"
-        android:id="@+id/nav_view"
-        tools:ignore="MissingConstraints" />
+        android:orientation="vertical"
+        android:elevation="4dp">
 
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawer_layout"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            tools:openDrawer="start">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/container_layout"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/nav_view"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+
+                android:fitsSystemWindows="true"
+                app:menu="@menu/side_menu" />
+
+
+        </androidx.drawerlayout.widget.DrawerLayout>
+
+
+    </LinearLayout>
+
+    <!--    to here-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

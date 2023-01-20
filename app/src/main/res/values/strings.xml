@@ -6,7 +6,7 @@
     <string name="chkbox_on_off">The checkbox is now</string>
     <string name="name_saved">Your name has been saved</string>
     <string name="next">next</string>
-    <string name="welcome">Welcome</string>
+
     <string name="dont_call_me_that">Don\'t call me that</string>
     <string name="thank_you">Thank You</string>
     <string name="add">Add</string>
@@ -15,7 +15,7 @@
     <string name="delete_this_message">Do you want to delete this?</string>
     <string name="selected_row">The selected row is:</string>
     <string name="the_guardian">The Guardian</string>
-    <string name="user">User</string>
+
     <string name="name">Enter Your Name</string>
     <string name="save">Save</string>
     <string name="info">Click USER to edit your name</string>
@@ -26,9 +26,15 @@
         and save.
     </string>
 
-    <string name="version_number">1</string>
+    <string name="version_number">v 1.0</string>
     <string name="help">Help</string>
-    <string name="what_to_do">Click on buttons to navigate the app. The navigation buttons are on the top of your screen.</string>
+    <string name="what_to_do">Click on 3 lines in the top left corner to open the navigation menu.</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+
+    <string name="welcome">Welcome</string>
+    <string name="abt">About</string>
+    <string name="fav">Favourites</string>
+    <string name="user">User</string>
+    <string name="browse">Browse</string>
 </resources>

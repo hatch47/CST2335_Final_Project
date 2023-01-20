@@ -16,31 +16,31 @@ import com.google.android.material.navigation.NavigationView;
 
 public abstract class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-//
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_base);
-//
-//
-//        //toolbar
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        //For NavigationDrawer:
-//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-//                drawer, toolbar, R.string.open, R.string.close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
-//
-//        NavigationView navigationView = findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
-//    }
-//
-//
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_base);
+
+
+        //toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //For NavigationDrawer:
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+                drawer, toolbar, R.string.open, R.string.close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+
 //    @Override
 //    public boolean onNavigationItemSelected(MenuItem item) {
 //        // Handle navigation view item clicks here.
