@@ -4,23 +4,53 @@
 
 
 
-    <item android:id="@+id/home"
-        android:title="home"
-        android:orderInCategory="100"
-        app:showAsAction="always"/>  <!-- This uses showAsAction=always, so look at icon= parameter -->
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title=""
+        app:showAsAction="always"
+        android:orderInCategory="1"
+        android:layout_gravity="center"
 
 
-    <item android:id="@+id/dad_joke_text"
-        android:orderInCategory="150"
-        app:showAsAction="always|collapseActionView"
-        android:title="dad_joke_text"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
+        />
 
+    <!-- Menu item that shows up as an icon in the toolbar -->
+    <item
+        android:id="@+id/browse"
+        android:icon="@drawable/browse"
+        android:title=""
+        app:showAsAction="always"
+        android:orderInCategory="2"
+        android:layout_gravity="center"
 
-    <item android:id="@+id/exit"
-        android:title="exit"
-        app:showAsAction="never"
-        android:orderInCategory="400"/> <!-- This uses showAsAction=never, so look at title= parameter -->
+        />
 
+    <item
+        android:id="@+id/heart"
+        android:icon="@drawable/heart"
+        android:title=""
+        app:showAsAction="always"
+        android:orderInCategory="3"
+        android:layout_gravity="center"
+        />
 
+    <item
+        android:id="@+id/User"
+        android:icon="@drawable/user"
+        android:title=""
+        app:showAsAction="always"
+        android:orderInCategory="4"
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/info"
+        android:icon="@drawable/info"
+        android:title=""
+        app:showAsAction="always"
+        android:orderInCategory="5"
+        android:layout_gravity="center"
+        />
 
 </menu>

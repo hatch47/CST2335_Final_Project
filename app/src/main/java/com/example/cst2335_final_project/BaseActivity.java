@@ -16,7 +16,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public abstract class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
+//
 //
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +46,13 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
 //        // Handle navigation view item clicks here.
 //        int id = item.getItemId();
 //
-//        if (id == R.id.home) {
-//            // Bring user to MainActivity if they aren't already on it
-//            if (!(this instanceof Welcome)) {
-//                Intent intent = new Intent(this, Welcome.class);
-//                startActivity(intent);
-//            }
-//        }
+////        if (id == R.id.home) {
+////            // Bring user to MainActivity if they aren't already on it
+////            if (!(this instanceof Welcome)) {
+////                Intent intent = new Intent(this, Welcome.class);
+////                startActivity(intent);
+////            }
+////        }
 //
 ////        if (id == R.id.dad_joke_text) {
 ////            // Bring user to DadJoke

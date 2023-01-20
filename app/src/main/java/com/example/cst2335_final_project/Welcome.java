@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,7 +23,8 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-public class Welcome extends AppCompatActivity {
+//public class Welcome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    public class Welcome extends AppCompatActivity {
 
     private Button button_user;
     private Button button_guardian;
@@ -63,9 +66,67 @@ public class Welcome extends AppCompatActivity {
         textView.setText(welcome + " " + name + "!");
 
 
+//        //navbar stuff
+//        //toolbar
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//
+//        //For NavigationDrawer:
+//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+////        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+//                drawer, toolbar, R.string.open, R.string.close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.syncState();
+//
+//        NavigationView navigationView = findViewById(R.id.nav_view);
+////        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+//
+//        navigationView.setNavigationItemSelectedListener(this);
 
 
     }
+
+//    //more navbar
+//    @Override
+//    public boolean onNavigationItemSelected(MenuItem item) {
+//        // Handle navigation view item clicks here.
+//        int id = item.getItemId();
+//
+//        if (id == R.id.home) {
+//            // Bring user to MainActivity if they aren't already on it
+//            if (!(this instanceof Welcome)) {
+//                Intent intent = new Intent(this, Welcome.class);
+//                startActivity(intent);
+//            }
+//        }
+//
+////        if (id == R.id.dad_joke_text) {
+////            // Bring user to DadJoke
+////            if (!(this instanceof DadJoke)) {
+////                Intent intent = new Intent(this, DadJoke.class);
+////                startActivity(intent);
+////            }
+////        }
+//
+//        if (id == R.id.exit) {
+//            // Close all open activities and exit
+//            finishAffinity();
+//        }
+//
+//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+//        drawer.closeDrawer(GravityCompat.START);
+//        return true;
+//    }
+//
+//    //more navbar
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
 
     @Override
     protected void onPause() {
