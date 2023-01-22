@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        getSupportActionBar().hide();
         new DownloadTask().execute();
 
-        ListView listView = findViewById(R.id.list_view);
+//        ListView listView = findViewById(R.id.list_view);
 
 
         //        copy here
@@ -127,15 +128,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 //    to here
 
-    //Retrieve data using AsyncTask
+
+
+
+
+
+
+
+    // retrieve using Async
     private class DownloadTask extends AsyncTask<String, Void, JSONObject> {
 
         @Override
         protected JSONObject doInBackground(String... urls) {
             // Fetch and download the data from the URL
-
+            EditText editText = findViewById(R.id.editText);
             try {
-                URL url = new URL("https://content.guardianapis.com/search?api-key=4f732a4a-b27e-4ac7-9350-e9d0b11dd949&q=Tesla"); // replace later so not only tesla
+                //to change the url so it ends with q= and then add the edittext value to the end
+//                String searchTerm = editText.getText().toString();
+//                URL url = new URL("https://content.guardianapis.com/search?api-key=4f732a4a-b27e-4ac7-9350-e9d0b11dd949&q=" + searchTerm);
+
+
+                //once it gets working, switch this to the url with searchterm
+                URL url = new URL("https://content.guardianapis.com/search?api-key=4f732a4a-b27e-4ac7-9350-e9d0b11dd949&q=Tesla");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = connection.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -160,33 +174,107 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
 
-
-        // almost working
         @Override
         protected void onPostExecute(JSONObject json) {
-            ArrayList<String> titles = new ArrayList<>();
-
+//            ArrayList<String> names = new ArrayList<>();
+//            ArrayList<String> masses = new ArrayList<>();
+//            ArrayList<String> heights = new ArrayList<>();
+            ArrayList<String> webTitles = new ArrayList<>();
+            ArrayList<String> webUrls = new ArrayList<>();
             JSONArray results = null;
             try {
+                // issue likely that new url doesn't have results
                 results = json.getJSONArray("results");
                 for (int i = 0; i < results.length(); i++) {
                     JSONObject character = results.getJSONObject(i);
+//                    String name = character.getString("name");
+//                    String mass = character.getString("mass");
+//                    String height = character.getString("height");
                     String webTitle = character.getString("webTitle");
-
-                    titles.add(webTitle);
-
+                    String webUrl = character.getString("webUrl");
+//                    names.add(name);
+//                    masses.add(mass);
+//                    heights.add(height);
+                    webTitles.add(webTitle);
+                    webUrls.add(webUrl);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
 
-//            Context context = MainActivity.this;
-//            ListView theList = (ListView) findViewById(R.id.theList);
+            Context context = MainActivity.this;
+            ListView theList = (ListView) findViewById(R.id.list_view);
 //            boolean isTablet = findViewById(R.id.fragmentLocation) != null; //check if the FrameLayout is loaded
+
+            ArrayAdapter<String> theAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, webTitles);
+            theList.setAdapter(theAdapter);
+
+
+
+    // old one that gets the starwars names
+//    private class DownloadTask extends AsyncTask<String, Void, JSONObject> {
+//
+//        @Override
+//        protected JSONObject doInBackground(String... urls) {
+//            // Fetch and download the data from the URL
+//
+//            try {
+//                URL url = new URL("https://swapi.dev/api/people/?format=json");
+//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//                InputStream inputStream = connection.getInputStream();
+//                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+//                StringBuilder result = new StringBuilder();
+//                String line;
+//                while ((line = reader.readLine()) != null) {
+//                    result.append(line);
+//                }
+//
+////                 Parse the JSON data and extract the names
+////                of the characters
+//
+//                JSONObject json = new JSONObject(result.toString());
+//
+//
+//                return json;
+//            } catch (IOException | JSONException e) {
+//                e.printStackTrace();
+//                Log.i("result", e.getMessage());
+//                return null;
+//            }
+//
+//        }
+//
+//        @Override
+//        protected void onPostExecute(JSONObject json) {
+//            ArrayList<String> names = new ArrayList<>();
+//            ArrayList<String> masses = new ArrayList<>();
+//            ArrayList<String> heights = new ArrayList<>();
+//            JSONArray results = null;
+//            try {
+//                results = json.getJSONArray("results");
+//                for (int i = 0; i < results.length(); i++) {
+//                    JSONObject character = results.getJSONObject(i);
+//                    String name = character.getString("name");
+//                    String mass = character.getString("mass");
+//                    String height = character.getString("height");
+//                    names.add(name);
+//                    masses.add(mass);
+//                    heights.add(height);
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//
+//            Context context = MainActivity.this;
+//            ListView theList = (ListView) findViewById(R.id.list_view);
+////            boolean isTablet = findViewById(R.id.fragmentLocation) != null; //check if the FrameLayout is loaded
 //
 //            ArrayAdapter<String> theAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, names);
 //            theList.setAdapter(theAdapter);
+
+         //  //havent gotten to here yet
 //            theList.setOnItemClickListener((list, item, position, id) -> {
 //                //Create a bundle to pass data to the new fragment
 //                Bundle dataToPass = new Bundle();
@@ -217,21 +305,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-
-    public void showDialog(View view) {
-        String help = getResources().getString(R.string.help);
-        String wtd = getResources().getString(R.string.what_to_do);
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle(help);
-        builder.setMessage(wtd);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // do something here
+            public void showDialog (View view){
+                String help = getResources().getString(R.string.help);
+                String wtd = getResources().getString(R.string.what_to_do);
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle(help);
+                builder.setMessage(wtd);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do something here
+                    }
+                });
+                builder.show();
             }
-        });
-        builder.show();
-    }
-}
+        }
 
 
 
