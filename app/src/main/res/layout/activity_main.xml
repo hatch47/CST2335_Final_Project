@@ -30,7 +30,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="0dp"
+        android:elevation="4dp"
         android:orientation="vertical">
 
 
@@ -81,15 +81,15 @@
 
     <ListView
         android:id="@+id/list_view"
-        android:layout_width="372dp"
-        android:layout_height="606dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="384dp"
+        android:layout_height="729dp"
         android:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.496" >
+        app:layout_constraintVertical_bias="0.496">
 
 
     </ListView>
@@ -111,14 +111,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.137" />
 
-    <!--    <com.google.android.material.navigation.NavigationView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_gravity="start"-->
-<!--        android:fitsSystemWindows="true"-->
 
-<!--        app:menu="@menu/side_menu"-->
-<!--        android:id="@+id/nav_view"-->
-<!--        tools:ignore="MissingConstraints" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

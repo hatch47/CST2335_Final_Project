@@ -7,16 +7,23 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,15 +31,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        getSupportActionBar().hide();
-        new RetrieveDataTask().execute();
+        new DownloadTask().execute();
 
         ListView listView = findViewById(R.id.list_view);
 
@@ -53,6 +61,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        // for asynctask
+        ListView list_view = findViewById(R.id.list_view);
+        new DownloadTask().execute();
+//        new DownloadTask(list_view).execute();
 
     }
 
@@ -113,39 +127,96 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 //    to here
 
-    class RetrieveDataTask extends AsyncTask<Void, Void, String> {
-        @Override
-        protected String doInBackground(Void... voids) {
-            String result = "";
-            try {
-                URL url = new URL("https://content.guardianapis.com/search?api-key=4f732a4a-b27e-4ac7-9350-e9d0b11dd949&q=Tesla");
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.setConnectTimeout(15000);
-                connection.setReadTimeout(15000);
-                connection.connect();
+    //Retrieve data using AsyncTask
+    private class DownloadTask extends AsyncTask<String, Void, JSONObject> {
 
+        @Override
+        protected JSONObject doInBackground(String... urls) {
+            // Fetch and download the data from the URL
+
+            try {
+                URL url = new URL("https://content.guardianapis.com/search?api-key=4f732a4a-b27e-4ac7-9350-e9d0b11dd949&q=Tesla"); // replace later so not only tesla
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = connection.getInputStream();
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                StringBuilder stringBuilder = new StringBuilder();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder result = new StringBuilder();
                 String line;
-                while ((line = bufferedReader.readLine()) != null) {
-                    stringBuilder.append(line);
+                while ((line = reader.readLine()) != null) {
+                    result.append(line);
                 }
-                result = stringBuilder.toString();
-            } catch (IOException e) {
+
+//                 Parse the JSON data and extract the names
+//                of the characters
+
+                JSONObject json = new JSONObject(result.toString());
+
+
+                return json;
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+                Log.i("result", e.getMessage());
+                return null;
+            }
+
+        }
+
+
+        // almost working
+        @Override
+        protected void onPostExecute(JSONObject json) {
+            ArrayList<String> titles = new ArrayList<>();
+
+            JSONArray results = null;
+            try {
+                results = json.getJSONArray("results");
+                for (int i = 0; i < results.length(); i++) {
+                    JSONObject character = results.getJSONObject(i);
+                    String webTitle = character.getString("webTitle");
+
+                    titles.add(webTitle);
+
+                }
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
-            return result;
+
+
+//            Context context = MainActivity.this;
+//            ListView theList = (ListView) findViewById(R.id.theList);
+//            boolean isTablet = findViewById(R.id.fragmentLocation) != null; //check if the FrameLayout is loaded
+//
+//            ArrayAdapter<String> theAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, names);
+//            theList.setAdapter(theAdapter);
+//            theList.setOnItemClickListener((list, item, position, id) -> {
+//                //Create a bundle to pass data to the new fragment
+//                Bundle dataToPass = new Bundle();
+//                dataToPass.putString(NAME_SELECTED, names.get(position) );
+//                dataToPass.putString(MASS_SELECTED, masses.get(position) );
+//                dataToPass.putString(HEIGHT_SELECTED, heights.get(position) );
+//
+//
+//                if(isTablet)
+//                {
+//                    DetailFragment dFragment = new DetailFragment(); //add a DetailFragment
+//                    dFragment.setArguments( dataToPass ); //pass it a bundle for information
+//                    getSupportFragmentManager()
+//                            .beginTransaction()
+//                            .replace(R.id.fragmentLocation, dFragment) //Add the fragment in FrameLayout
+//                            .commit(); //actually load the fragment.
+//                }
+//                else //isPhone
+//                {
+//                    Intent nextActivity = new Intent(MainActivity.this, EmptyActivity.class);
+//                    nextActivity.putExtras(dataToPass); //send data to next activity
+//                    startActivity(nextActivity); //make the transition
+//                }
+//            });
+//
+//
         }
 
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            // parse the JSON data and update the UI
-        }
     }
+
 
     public void showDialog(View view) {
         String help = getResources().getString(R.string.help);
@@ -160,19 +231,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         builder.show();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
