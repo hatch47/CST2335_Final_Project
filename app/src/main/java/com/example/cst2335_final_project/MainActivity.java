@@ -12,6 +12,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,12 +38,36 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static final String NAME_SELECTED = "NAME";
+    public static final String MASS_SELECTED = "MASS";
+    public static final String HEIGHT_SELECTED = "HEIGHT";
+    public static final String WEBURL_SELECTED = "WEBURL";
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        getSupportActionBar().hide();
         new DownloadTask().execute();
+        EditText editText = findViewById(R.id.editText);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                new DownloadTask().execute();
+            }
+        });
 
 //        ListView listView = findViewById(R.id.list_view);
 
@@ -144,12 +170,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             EditText editText = findViewById(R.id.editText);
             try {
                 //to change the url so it ends with q= and then add the edittext value to the end
-//                String searchTerm = editText.getText().toString();
-//                URL url = new URL("https://content.guardianapis.com/search?api-key=4f732a4a-b27e-4ac7-9350-e9d0b11dd949&q=" + searchTerm);
+                String searchTerm = editText.getText().toString();
+                URL url = new URL("https://content.guardianapis.com/search?api-key=4f732a4a-b27e-4ac7-9350-e9d0b11dd949&q=" + searchTerm);
 
 
                 //once it gets working, switch this to the url with searchterm
-                URL url = new URL("https://content.guardianapis.com/search?api-key=4f732a4a-b27e-4ac7-9350-e9d0b11dd949&q=Tesla");
+//                URL url = new URL("https://content.guardianapis.com/search?api-key=4f732a4a-b27e-4ac7-9350-e9d0b11dd949&q=Tesla");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = connection.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -176,6 +202,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         @Override
         protected void onPostExecute(JSONObject json) {
+            Log.i("Post Exectute", json.toString());
 //            ArrayList<String> names = new ArrayList<>();
 //            ArrayList<String> masses = new ArrayList<>();
 //            ArrayList<String> heights = new ArrayList<>();
@@ -183,8 +210,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             ArrayList<String> webUrls = new ArrayList<>();
             JSONArray results = null;
             try {
-                // issue likely that new url doesn't have results
-                results = json.getJSONArray("results");
+                JSONObject newJson = json.getJSONObject("response");
+                results = newJson.getJSONArray("results");
+
                 for (int i = 0; i < results.length(); i++) {
                     JSONObject character = results.getJSONObject(i);
 //                    String name = character.getString("name");
@@ -205,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             Context context = MainActivity.this;
             ListView theList = (ListView) findViewById(R.id.list_view);
-//            boolean isTablet = findViewById(R.id.fragmentLocation) != null; //check if the FrameLayout is loaded
+            boolean isTablet = findViewById(R.id.fragmentLocation) != null; //check if the FrameLayout is loaded
 
             ArrayAdapter<String> theAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, webTitles);
             theList.setAdapter(theAdapter);
@@ -213,94 +241,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     // old one that gets the starwars names
-//    private class DownloadTask extends AsyncTask<String, Void, JSONObject> {
-//
-//        @Override
-//        protected JSONObject doInBackground(String... urls) {
-//            // Fetch and download the data from the URL
-//
-//            try {
-//                URL url = new URL("https://swapi.dev/api/people/?format=json");
-//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                InputStream inputStream = connection.getInputStream();
-//                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-//                StringBuilder result = new StringBuilder();
-//                String line;
-//                while ((line = reader.readLine()) != null) {
-//                    result.append(line);
-//                }
-//
-////                 Parse the JSON data and extract the names
-////                of the characters
-//
-//                JSONObject json = new JSONObject(result.toString());
-//
-//
-//                return json;
-//            } catch (IOException | JSONException e) {
-//                e.printStackTrace();
-//                Log.i("result", e.getMessage());
-//                return null;
-//            }
-//
-//        }
-//
-//        @Override
-//        protected void onPostExecute(JSONObject json) {
-//            ArrayList<String> names = new ArrayList<>();
-//            ArrayList<String> masses = new ArrayList<>();
-//            ArrayList<String> heights = new ArrayList<>();
-//            JSONArray results = null;
-//            try {
-//                results = json.getJSONArray("results");
-//                for (int i = 0; i < results.length(); i++) {
-//                    JSONObject character = results.getJSONObject(i);
-//                    String name = character.getString("name");
-//                    String mass = character.getString("mass");
-//                    String height = character.getString("height");
-//                    names.add(name);
-//                    masses.add(mass);
-//                    heights.add(height);
-//                }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//
-//
-//            Context context = MainActivity.this;
-//            ListView theList = (ListView) findViewById(R.id.list_view);
-////            boolean isTablet = findViewById(R.id.fragmentLocation) != null; //check if the FrameLayout is loaded
-//
-//            ArrayAdapter<String> theAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, names);
-//            theList.setAdapter(theAdapter);
+
 
          //  //havent gotten to here yet
-//            theList.setOnItemClickListener((list, item, position, id) -> {
-//                //Create a bundle to pass data to the new fragment
-//                Bundle dataToPass = new Bundle();
+            theList.setOnItemClickListener((list, item, position, id) -> {
+                //Create a bundle to pass data to the new fragment
+                Bundle dataToPass = new Bundle();
 //                dataToPass.putString(NAME_SELECTED, names.get(position) );
 //                dataToPass.putString(MASS_SELECTED, masses.get(position) );
 //                dataToPass.putString(HEIGHT_SELECTED, heights.get(position) );
-//
-//
-//                if(isTablet)
-//                {
-//                    DetailFragment dFragment = new DetailFragment(); //add a DetailFragment
-//                    dFragment.setArguments( dataToPass ); //pass it a bundle for information
-//                    getSupportFragmentManager()
-//                            .beginTransaction()
-//                            .replace(R.id.fragmentLocation, dFragment) //Add the fragment in FrameLayout
-//                            .commit(); //actually load the fragment.
-//                }
-//                else //isPhone
-//                {
-//                    Intent nextActivity = new Intent(MainActivity.this, EmptyActivity.class);
-//                    nextActivity.putExtras(dataToPass); //send data to next activity
-//                    startActivity(nextActivity); //make the transition
-//                }
-//            });
-//
-//
+                dataToPass.putString(WEBURL_SELECTED, webUrls.get(position) );
+
+
+                if(isTablet)
+                {
+                    DetailFragment dFragment = new DetailFragment(); //add a DetailFragment
+                    dFragment.setArguments( dataToPass ); //pass it a bundle for information
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragmentLocation, dFragment) //Add the fragment in FrameLayout
+                            .commit(); //actually load the fragment.
+                }
+                else //isPhone
+                {
+                    Intent nextActivity = new Intent(MainActivity.this, EmptyActivity.class);
+                    nextActivity.putExtras(dataToPass); //send data to next activity
+                    startActivity(nextActivity); //make the transition
+                }
+            });
+
+
         }
 
     }

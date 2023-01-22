@@ -37,5 +37,6 @@
 
 
     <string name="search">Rechercher des articles The Guardian</string>
+    <string name="url">URL: </string>
 
 </resources>

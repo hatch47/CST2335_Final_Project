@@ -39,4 +39,6 @@
     <string name="browse">Browse</string>
 
     <string name="search">Search The Guardian Articles</string>
+
+    <string name="url">URL: </string>
 </resources>
