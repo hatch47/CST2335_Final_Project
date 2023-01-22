@@ -35,4 +35,7 @@
     <string name="user">Utilisateur</string>
     <string name="browse">Parcourir</string>
 
+
+    <string name="search">Rechercher des articles The Guardian</string>
+
 </resources>

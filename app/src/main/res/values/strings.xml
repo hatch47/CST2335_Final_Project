@@ -37,4 +37,6 @@
     <string name="fav">Favourites</string>
     <string name="user">User</string>
     <string name="browse">Browse</string>
+
+    <string name="search">Search The Guardian Articles</string>
 </resources>

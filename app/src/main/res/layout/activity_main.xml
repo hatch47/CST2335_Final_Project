@@ -24,11 +24,14 @@
         android:elevation="5dp"/>
 
     <!--    navbar below-->
+
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:elevation="4dp">
+        android:elevation="0dp"
+        android:orientation="vertical">
 
 
         <androidx.appcompat.widget.Toolbar
@@ -70,6 +73,8 @@
         </androidx.drawerlayout.widget.DrawerLayout>
 
 
+
+
     </LinearLayout>
 
     <!--    to here-->
@@ -79,16 +84,34 @@
         android:layout_width="372dp"
         android:layout_height="606dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:elevation="3dp"
+        android:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.496" />
+        app:layout_constraintVertical_bias="0.496" >
 
 
+    </ListView>
 
-<!--    <com.google.android.material.navigation.NavigationView-->
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="276dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:ems="10"
+        android:hint="@string/search"
+        android:inputType="text"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.137" />
+
+    <!--    <com.google.android.material.navigation.NavigationView-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="match_parent"-->
 <!--        android:layout_gravity="start"-->
