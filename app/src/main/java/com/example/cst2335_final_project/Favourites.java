@@ -9,14 +9,27 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+
 public class Favourites extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+
+    private DatabaseHelper databaseHelper;
+    private ListView listView;
+    private ArrayList<String> urlList;
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +52,40 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
+
+        //database
+        databaseHelper = new DatabaseHelper(this);
+        listView = (ListView) findViewById(R.id.favListView);
+        urlList = new ArrayList<>();
+
+        // retrieve data from the database
+        Cursor cursor = databaseHelper.getData();
+        while (cursor.moveToNext()) {
+            urlList.add(cursor.getString(0));
+        }
+
+        // set the adapter for the ListView
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, urlList);
+        listView.setAdapter(adapter);
+
+        // delete from favourites using database
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String selectedUrl = urlList.get(position);
+                databaseHelper.deleteData(selectedUrl);
+                urlList.remove(position);
+                adapter.notifyDataSetChanged();
+                Toast.makeText(Favourites.this, "Deleted from favorites", Toast.LENGTH_SHORT).show();
+
+                return true;
+            }
+        });
+
+
 
     }
 
@@ -105,7 +152,7 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
 
     public void showDialog(View view) {
         String help = getResources().getString(R.string.help);
-        String wtd = getResources().getString(R.string.what_to_do);
+        String wtd = getResources().getString(R.string.what_to_do_fav);
         AlertDialog.Builder builder = new AlertDialog.Builder(Favourites.this);
         builder.setTitle(help);
         builder.setMessage(wtd);

@@ -12,15 +12,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -42,7 +46,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static final String MASS_SELECTED = "MASS";
     public static final String HEIGHT_SELECTED = "HEIGHT";
     public static final String WEBURL_SELECTED = "WEBURL";
-
+    public static final String WEBTITLE_SELECTED = "WEBTITLE";
+    private DatabaseHelper databaseHelper;
+    private ListView listView;
 
 
     @Override
@@ -51,6 +57,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 //        getSupportActionBar().hide();
         new DownloadTask().execute();
+
+
+        //progressbar
+        ProgressBar progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                progressBar.setVisibility(View.GONE);
+            }
+        };
+        handler.postDelayed(runnable, 2000);
+
+
         EditText editText = findViewById(R.id.editText);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -94,6 +115,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ListView list_view = findViewById(R.id.list_view);
         new DownloadTask().execute();
 //        new DownloadTask(list_view).execute();
+
+
+
+
+        //database
+        databaseHelper = new DatabaseHelper(this);
+//        listView = (ListView) findViewById(R.id.list_view);
+        list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i,long l) {
+                // get the selected item
+                String selectedItem = (String) adapterView.getItemAtPosition(i);
+                databaseHelper.insertData(selectedItem);
+//                String itemUrl = selectedItem.getUrl();
+//                String itemRedirectUrl = selectedItem.getRedirectUrl();
+//                databaseHelper.insertData(itemUrl, itemRedirectUrl);
+
+                Toast.makeText(MainActivity.this, "Added to favourites", Toast.LENGTH_SHORT).show();
+
+                return true;
+            }
+        });
+
+
 
     }
 
@@ -251,6 +297,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                dataToPass.putString(MASS_SELECTED, masses.get(position) );
 //                dataToPass.putString(HEIGHT_SELECTED, heights.get(position) );
                 dataToPass.putString(WEBURL_SELECTED, webUrls.get(position) );
+                dataToPass.putString(WEBTITLE_SELECTED, webTitles.get(position) );
 
 
                 if(isTablet)
@@ -277,7 +324,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             public void showDialog (View view){
                 String help = getResources().getString(R.string.help);
-                String wtd = getResources().getString(R.string.what_to_do);
+                String wtd = getResources().getString(R.string.what_to_do_browse);
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle(help);
                 builder.setMessage(wtd);

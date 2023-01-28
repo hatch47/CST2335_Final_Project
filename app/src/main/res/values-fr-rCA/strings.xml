@@ -39,4 +39,7 @@
     <string name="search">Rechercher des articles The Guardian</string>
     <string name="url">URL: </string>
 
+    <string name="what_to_do_browse">Cliquez sur 3 lignes dans le coin supérieur gauche pour ouvrir le menu de navigation. Cliquez longuement pour enregistrer dans les favoris.</string>
+    <string name="what_to_do_fav">Cliquez sur 3 lignes dans le coin supérieur gauche pour ouvrir le menu de navigation. Cliquez longuement pour supprimer des favoris.</string>
+
 </resources>

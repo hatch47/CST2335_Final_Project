@@ -41,4 +41,8 @@
     <string name="search">Search The Guardian Articles</string>
 
     <string name="url">URL: </string>
+
+    <string name="what_to_do_browse">Click on 3 lines in the top left corner to open the navigation menu. Long click to save to favourites.</string>
+    <string name="what_to_do_fav">Click on 3 lines in the top left corner to open the navigation menu. Long click to remove from favourites.</string>
+
 </resources>
