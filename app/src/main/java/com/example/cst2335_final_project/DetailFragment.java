@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -27,12 +28,18 @@ public class DetailFragment extends Fragment {
     private AppCompatActivity parentActivity;
 
     //for fav list
-    private TextView urlValue;
-    private ImageButton favButton;
+//    private TextView urlValue;
+//    private ImageButton favButton;
     private ListView favListView;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> favUrls;
     private ImageButton backButton;
+    private DatabaseHelper mDatabaseHelper;
+
+    private Button favButton;
+    private TextView nameLabel;
+    private TextView urlValue;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,13 +61,27 @@ public class DetailFragment extends Fragment {
         urlView.setText(url);
         titleView.setText(title);
 
-        // for fav button
+        favButton = (Button) result.findViewById(R.id.favButton);
 
+        // testing for fav button
+//        favButton = (Button) getView().findViewById(R.id.favButton);
+//        favButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String name = nameLabel.getText().toString();
+//                String url = urlValue.getText().toString();
+//                DatabaseHelper dbHelper = new DatabaseHelper(getContext());
+//                dbHelper.addToFavourites(name, url);
+//                Toast.makeText(DetailFragment.this, "Added to favorites", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 //        return view;
         return result;
 
     }
+
+
 
     @Override
     public void onAttach(Context context) {

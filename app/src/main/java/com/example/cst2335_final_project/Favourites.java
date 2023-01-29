@@ -29,8 +29,13 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
     private DatabaseHelper databaseHelper;
     private ListView listView;
     private ArrayList<String> urlList;
-    private ArrayAdapter<String> adapter;
+//    private ArrayAdapter<String> adapter;
     ArrayList<Integer> positionList = new ArrayList<>();
+
+    ListView favListView;
+    ArrayList<String> favData = new ArrayList<>();
+    ArrayAdapter<String> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +89,21 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
             }
         });
 
+
+        //testing fav button
+//        favListView = (ListView) findViewById(R.id.favListView);
+//
+//        //Retrieve the data from the database using the DatabaseHelper class
+//        DatabaseHelper dbHelper = new DatabaseHelper(this);
+//        Cursor cursor = dbHelper.getAllData();
+//        while(cursor.moveToNext()){
+//            favData.add(cursor.getString(1) + " - " + cursor.getString(2));
+//        }
+//        cursor.close();
+//
+//        //Set the ArrayList as the data source for the ListView
+//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, favData);
+//        favListView.setAdapter(adapter);
 
     }
 
