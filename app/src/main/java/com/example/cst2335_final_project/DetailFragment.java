@@ -61,7 +61,7 @@ public class DetailFragment extends Fragment {
         urlView.setText(url);
         titleView.setText(title);
 
-        favButton = (Button) result.findViewById(R.id.favButton);
+//        favButton = (Button) result.findViewById(R.id.favButton);
 
         // testing for fav button
 //        favButton = (Button) getView().findViewById(R.id.favButton);

@@ -75,15 +75,21 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, urlList);
         listView.setAdapter(adapter);
 
+        //testing new
+//
+
+
+
         // delete from favourites using database -- semi-working one
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String fav = getString(R.string.remfromfav);
                 String selectedUrl = urlList.get(position);
                 databaseHelper.deleteData(selectedUrl);
                 urlList.remove(position);
                 adapter.notifyDataSetChanged();
-                Toast.makeText(Favourites.this, "Deleted from favorites", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Favourites.this, fav, Toast.LENGTH_SHORT).show();
 
                 return true;
             }

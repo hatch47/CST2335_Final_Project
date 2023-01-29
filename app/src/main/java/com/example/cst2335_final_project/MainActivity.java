@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,9 +43,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static final String NAME_SELECTED = "NAME";
-    public static final String MASS_SELECTED = "MASS";
-    public static final String HEIGHT_SELECTED = "HEIGHT";
+
     public static final String WEBURL_SELECTED = "WEBURL";
     public static final String WEBTITLE_SELECTED = "WEBTITLE";
     private DatabaseHelper databaseHelper;
@@ -124,14 +123,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i,long l) {
+                String fav = getString(R.string.addtofav);
+
                 // get the selected item
                 String selectedItem = (String) adapterView.getItemAtPosition(i);
                 databaseHelper.insertData(selectedItem);
-                Toast.makeText(MainActivity.this, "Added to favourites", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, fav, Toast.LENGTH_SHORT).show();
 
                 return true;
             }
         });
+
+
+        //testing new
+
+
+
 
     }
 
@@ -235,9 +242,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         protected void onPostExecute(JSONObject json) {
             Log.i("Post Exectute", json.toString());
-//            ArrayList<String> names = new ArrayList<>();
-//            ArrayList<String> masses = new ArrayList<>();
-//            ArrayList<String> heights = new ArrayList<>();
+
             ArrayList<String> webTitles = new ArrayList<>();
             ArrayList<String> webUrls = new ArrayList<>();
             JSONArray results = null;
@@ -247,14 +252,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 for (int i = 0; i < results.length(); i++) {
                     JSONObject character = results.getJSONObject(i);
-//                    String name = character.getString("name");
-//                    String mass = character.getString("mass");
-//                    String height = character.getString("height");
+
                     String webTitle = character.getString("webTitle");
                     String webUrl = character.getString("webUrl");
-//                    names.add(name);
-//                    masses.add(mass);
-//                    heights.add(height);
+
                     webTitles.add(webTitle);
                     webUrls.add(webUrl);
                 }
@@ -265,14 +266,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             Context context = MainActivity.this;
             ListView theList = (ListView) findViewById(R.id.list_view);
+
             boolean isTablet = findViewById(R.id.fragmentLocation) != null; //check if the FrameLayout is loaded
 
-            ArrayAdapter<String> theAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, webTitles);
+//            ArrayAdapter<String> theAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, webTitles); //comment out to test new way
+            MyAdapter theAdapter = new MyAdapter(context, webTitles, webUrls);
             theList.setAdapter(theAdapter);
 
+            //just added
 
 
-    // old one that gets the starwars names
+
+
+
+            // old one that gets the starwars names
 
 
          //  //havent gotten to here yet
