@@ -117,11 +117,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        new DownloadTask(list_view).execute();
 
 
-
-
-        //database
+        //database semi-working
         databaseHelper = new DatabaseHelper(this);
-//        listView = (ListView) findViewById(R.id.list_view);
+        listView = (ListView) findViewById(R.id.list_view);
         list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             @Override
@@ -129,17 +127,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 // get the selected item
                 String selectedItem = (String) adapterView.getItemAtPosition(i);
                 databaseHelper.insertData(selectedItem);
-//                String itemUrl = selectedItem.getUrl();
-//                String itemRedirectUrl = selectedItem.getRedirectUrl();
-//                databaseHelper.insertData(itemUrl, itemRedirectUrl);
-
                 Toast.makeText(MainActivity.this, "Added to favourites", Toast.LENGTH_SHORT).show();
 
                 return true;
             }
         });
-
-
 
     }
 
@@ -199,12 +191,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 //    to here
-
-
-
-
-
-
 
 
     // retrieve using Async

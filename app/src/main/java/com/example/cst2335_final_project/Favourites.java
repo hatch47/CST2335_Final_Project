@@ -30,7 +30,7 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
     private ListView listView;
     private ArrayList<String> urlList;
     private ArrayAdapter<String> adapter;
-
+    ArrayList<Integer> positionList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,13 +54,12 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
         navigationView.setNavigationItemSelectedListener(this);
 
 
-
-
         //database
         databaseHelper = new DatabaseHelper(this);
         listView = (ListView) findViewById(R.id.favListView);
         urlList = new ArrayList<>();
 
+        //semi-working
         // retrieve data from the database
         Cursor cursor = databaseHelper.getData();
         while (cursor.moveToNext()) {
@@ -71,7 +70,7 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, urlList);
         listView.setAdapter(adapter);
 
-        // delete from favourites using database
+        // delete from favourites using database -- semi-working one
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -84,7 +83,6 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
                 return true;
             }
         });
-
 
 
     }
