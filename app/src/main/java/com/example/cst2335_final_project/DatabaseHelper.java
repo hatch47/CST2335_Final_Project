@@ -13,11 +13,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    public static final String COLUMN_NAME = "column_name";
     private static final String DATABASE_NAME = "favourites.db";
     private static final String TABLE_NAME = "favourites_table";
     private static final String COL_1 = "URL";
-    private static final String COL_2 = "URL2";
-
+    private static final String COL_2 = "URL";
+    private static final String COL_3 = "URL";
 
 
     public DatabaseHelper(Context context) {
@@ -51,7 +52,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //testing one
-
+//    public boolean insertData(String itemValue) {
+//        SQLiteDatabase database = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put(COLUMN_NAME, itemValue);
+//        long result = database.insert(TABLE_NAME, null, contentValues);
+//        database.close();
+//        if (result == -1)
+//            return false;
+//        else
+//            return true;
+//    }
 
     public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();

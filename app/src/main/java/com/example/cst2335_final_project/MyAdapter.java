@@ -56,20 +56,38 @@ public class MyAdapter extends ArrayAdapter<String> {
         this.webUrls = webUrls;
     }
 
+//    @Override
+//    public View getView(int position, View convertView, ViewGroup parent) {
+//        View view = convertView;
+//        if (view == null) {
+//            view = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_2, parent, false);
+//        }
+//
+//        String webTitle = webTitles.get(position);
+//        String webUrl = webUrls.get(position);
+//
+//        TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+//        TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+//        text1.setText(webTitle);
+//        text2.setText(webUrl);
+//
+//        return view;
+//    }
+
+    //to concate them together, but database still saves only title
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
-            view = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_2, parent, false);
+            view = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
         }
 
         String webTitle = webTitles.get(position);
         String webUrl = webUrls.get(position);
 
-        TextView text1 = (TextView) view.findViewById(android.R.id.text1);
-        TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-        text1.setText(webTitle);
-        text2.setText(webUrl);
+        String itemText = webTitle + " - " + webUrl;
+        TextView textView = (TextView) view.findViewById(android.R.id.text1);
+        textView.setText(itemText);
 
         return view;
     }

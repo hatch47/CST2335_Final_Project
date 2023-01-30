@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -116,9 +117,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        new DownloadTask(list_view).execute();
 
 
-        //database semi-working
+//        //database semi-working
         databaseHelper = new DatabaseHelper(this);
         listView = (ListView) findViewById(R.id.list_view);
+
         list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             @Override
@@ -127,6 +129,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 // get the selected item
                 String selectedItem = (String) adapterView.getItemAtPosition(i);
+                Log.d("logging ", selectedItem);
+//                String urlSelected = (String) adapterView.getItemAtPosition(i);
                 databaseHelper.insertData(selectedItem);
                 Toast.makeText(MainActivity.this, fav, Toast.LENGTH_SHORT).show();
 
@@ -136,6 +140,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         //testing new
+//        list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                String itemValue = list_view.getItemAtPosition(position).toString();
+//                DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
+//                boolean isInserted = databaseHelper.insertData(itemValue);
+//                Log.d("MainActivity", "onItemLongClick: itemValue = " + itemValue);
+//                if (isInserted)
+//                    Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
+//                else
+//                    Toast.makeText(MainActivity.this, "Data not Inserted", Toast.LENGTH_SHORT).show();
+//                return true;
+//            }
+//        });
+
+
+
 
 
 
@@ -273,7 +294,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             MyAdapter theAdapter = new MyAdapter(context, webTitles, webUrls);
             theList.setAdapter(theAdapter);
 
+
+
+
             //just added
+
 
 
 
