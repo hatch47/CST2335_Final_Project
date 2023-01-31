@@ -98,15 +98,6 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
         });
 
 
-
-
-
-
-
-
-
-
-
         // delete from favourites using database -- semi-working one
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -122,29 +113,6 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
             }
         });
 
-
-
-        //to make url
-
-
-
-
-
-
-        //testing fav button
-//        favListView = (ListView) findViewById(R.id.favListView);
-//
-//        //Retrieve the data from the database using the DatabaseHelper class
-//        DatabaseHelper dbHelper = new DatabaseHelper(this);
-//        Cursor cursor = dbHelper.getAllData();
-//        while(cursor.moveToNext()){
-//            favData.add(cursor.getString(1) + " - " + cursor.getString(2));
-//        }
-//        cursor.close();
-//
-//        //Set the ArrayList as the data source for the ListView
-//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, favData);
-//        favListView.setAdapter(adapter);
 
     }
 
@@ -204,8 +172,6 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
         return true;
     }
 //    to here
-
-
 
 
 

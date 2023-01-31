@@ -90,10 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-//        ListView listView = findViewById(R.id.list_view);
 
-
-        //        copy here
 //        //navbar stuff
 
 //toolbar
@@ -120,44 +117,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        //database semi-working
         databaseHelper = new DatabaseHelper(this);
         listView = (ListView) findViewById(R.id.list_view);
-
-//        list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i,long l) {
-//                String fav = getString(R.string.addtofav);
-//
-//                // get the selected item
-//                String selectedItem = (String) adapterView.getItemAtPosition(i);
-//                Log.d("logging ", selectedItem);
-////                String urlSelected = (String) adapterView.getItemAtPosition(i);
-//                databaseHelper.insertData(selectedItem);
-//                Toast.makeText(MainActivity.this, fav, Toast.LENGTH_SHORT).show();
-//
-//                return true;
-//            }
-//        });
-
-
-        //testing new
-//        list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//                String itemValue = list_view.getItemAtPosition(position).toString();
-//                DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
-//                boolean isInserted = databaseHelper.insertData(itemValue);
-//                Log.d("MainActivity", "onItemLongClick: itemValue = " + itemValue);
-//                if (isInserted)
-//                    Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
-//                else
-//                    Toast.makeText(MainActivity.this, "Data not Inserted", Toast.LENGTH_SHORT).show();
-//                return true;
-//            }
-//        });
-
-
-
-
 
 
 
@@ -313,12 +272,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 return true;
             });
-
-
-
-
-
-            // old one that gets the starwars names
 
 
          //  //fragments

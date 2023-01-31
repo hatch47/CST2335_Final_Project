@@ -41,68 +41,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
     }
 
 
-//    @Override
-//    public boolean onNavigationItemSelected(MenuItem item) {
-//        // Handle navigation view item clicks here.
-//        int id = item.getItemId();
-//
-////        if (id == R.id.home) {
-////            // Bring user to MainActivity if they aren't already on it
-////            if (!(this instanceof Welcome)) {
-////                Intent intent = new Intent(this, Welcome.class);
-////                startActivity(intent);
-////            }
-////        }
-//
-////        if (id == R.id.dad_joke_text) {
-////            // Bring user to DadJoke
-////            if (!(this instanceof DadJoke)) {
-////                Intent intent = new Intent(this, DadJoke.class);
-////                startActivity(intent);
-////            }
-////        }
-//
-//        if (id == R.id.exit) {
-//            // Close all open activities and exit
-//            finishAffinity();
-//        }
-//
-//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//        drawer.closeDrawer(GravityCompat.START);
-//        return true;
-//    }
-//
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//
-////        String item1 = getString(R.string.item1);
-////        String item2 = getString(R.string.item2);
-////        String message = null;
-//        //Look at your menu XML file. Put a case for every id in that file:
-////        switch(item.getItemId())
-////        {
-////            //what to do when the menu item is selected:
-////            case R.id.cap:
-////                message = item1;
-////                break;
-////            case R.id.spiderman:
-////                message = item2;
-////                break;
-////
-////        }
-////        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-//        return true;
-//
-//    }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-
 
 }
 

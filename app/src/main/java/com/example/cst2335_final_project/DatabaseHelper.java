@@ -51,18 +51,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    //testing one
-//    public boolean insertData(String itemValue) {
-//        SQLiteDatabase database = this.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put(COLUMN_NAME, itemValue);
-//        long result = database.insert(TABLE_NAME, null, contentValues);
-//        database.close();
-//        if (result == -1)
-//            return false;
-//        else
-//            return true;
-//    }
 
     public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
