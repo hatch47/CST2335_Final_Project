@@ -297,7 +297,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-            //just added
+            //set url and title to db
             theList.setOnItemLongClickListener((list, item, position, id) -> {
                 String fav = getString(R.string.addtofav);
 
@@ -321,13 +321,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // old one that gets the starwars names
 
 
-         //  //havent gotten to here yet
+         //  //fragments
             theList.setOnItemClickListener((list, item, position, id) -> {
                 //Create a bundle to pass data to the new fragment
                 Bundle dataToPass = new Bundle();
-//                dataToPass.putString(NAME_SELECTED, names.get(position) );
-//                dataToPass.putString(MASS_SELECTED, masses.get(position) );
-//                dataToPass.putString(HEIGHT_SELECTED, heights.get(position) );
                 dataToPass.putString(WEBURL_SELECTED, webUrls.get(position) );
                 dataToPass.putString(WEBTITLE_SELECTED, webTitles.get(position) );
 

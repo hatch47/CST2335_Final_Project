@@ -54,27 +54,15 @@ public class DetailFragment extends Fragment {
         // Inflate the layout for this fragment
         View result = inflater.inflate(R.layout.fragment_detail, container, false);
 
-        //show the URL
+        //show the URL and title
         TextView urlView = (TextView) result.findViewById(R.id.url_value);
         TextView titleView = (TextView) result.findViewById(R.id.title_value);
 //        urlView.setMovementMethod(LinkMovementMethod.getInstance());
         urlView.setText(url);
         titleView.setText(title);
 
-//        favButton = (Button) result.findViewById(R.id.favButton);
-
-        // testing for fav button
-//        favButton = (Button) getView().findViewById(R.id.favButton);
-//        favButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String name = nameLabel.getText().toString();
-//                String url = urlValue.getText().toString();
-//                DatabaseHelper dbHelper = new DatabaseHelper(getContext());
-//                dbHelper.addToFavourites(name, url);
-//                Toast.makeText(DetailFragment.this, "Added to favorites", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        //Tell the parent activity to remove
+//        parentActivity.getSupportFragmentManager().beginTransaction().remove(this).commit();
 
 //        return view;
         return result;
