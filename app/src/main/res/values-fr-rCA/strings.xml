@@ -40,7 +40,8 @@
     <string name="url">URL: </string>
 
     <string name="what_to_do_browse">Cliquez sur 3 lignes dans le coin supérieur gauche pour ouvrir le menu de navigation. Cliquez longuement pour enregistrer dans les favoris.</string>
-    <string name="what_to_do_fav">Cliquez sur 3 lignes dans le coin supérieur gauche pour ouvrir le menu de navigation. Cliquez longuement pour supprimer des favoris.</string>
+    <string name="what_to_do_fav">
+Cliquez sur 3 lignes dans le coin supérieur gauche pour ouvrir le menu de navigation. Cliquez sur l élément dans la liste pour ouvrir le lien. Cliquez longuement pour supprimer des favoris.</string>
     <string name="stf">Enregistrer dans les Favoris</string>
     <string name="addtofav">Ajouté aux favoris</string>
     <string name="remfromfav">Supprimé des favoris</string>

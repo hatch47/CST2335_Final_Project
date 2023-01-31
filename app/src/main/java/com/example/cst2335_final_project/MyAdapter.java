@@ -1,6 +1,9 @@
 package com.example.cst2335_final_project;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
@@ -56,6 +59,27 @@ public class MyAdapter extends ArrayAdapter<String> {
         this.webUrls = webUrls;
     }
 
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View view = convertView;
+        if (view == null) {
+            view = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_2, parent, false);
+        }
+
+        String webTitle = webTitles.get(position);
+        String webUrl = webUrls.get(position);
+
+        TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+        TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+        text1.setText(webTitle);
+        text2.setText(webUrl);
+
+        return view;
+    }
+
+
+
+
 //    @Override
 //    public View getView(int position, View convertView, ViewGroup parent) {
 //        View view = convertView;
@@ -64,33 +88,51 @@ public class MyAdapter extends ArrayAdapter<String> {
 //        }
 //
 //        String webTitle = webTitles.get(position);
-//        String webUrl = webUrls.get(position);
+//        final String webUrl = webUrls.get(position);
 //
 //        TextView text1 = (TextView) view.findViewById(android.R.id.text1);
 //        TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 //        text1.setText(webTitle);
 //        text2.setText(webUrl);
+//        text2.setClickable(true);
+//        text2.setMovementMethod(LinkMovementMethod.getInstance());
+//        text2.setText(
+//                Html.fromHtml("<a href='" + webUrl + "'>" + webUrl + "</a>")
+//        );
 //
 //        return view;
 //    }
 
-    //to concate them together, but database still saves only title
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-        if (view == null) {
-            view = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
-        }
+//    @Override
+//    public View getView(int position, View convertView, ViewGroup parent) {
+//        View view = convertView;
+//        if (view == null) {
+//            view = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_2, parent, false);
+//        }
+//
+//        String webTitle = webTitles.get(position);
+//        final String webUrl = webUrls.get(position);
+//
+//        TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+//        final TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+//        text1.setText(webTitle);
+//        text2.setText(webUrl);
+//        text2.setClickable(true);
+//        text2.setMovementMethod(LinkMovementMethod.getInstance());
+//        text2.setText(
+//                Html.fromHtml("<a href='" + webUrl + "'>" + webUrl + "</a>")
+//        );
+//
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // perform your original onClick action here
+//            }
+//        });
+//
+//        return view;
+//    }
 
-        String webTitle = webTitles.get(position);
-        String webUrl = webUrls.get(position);
-
-        String itemText = webTitle + " - " + webUrl;
-        TextView textView = (TextView) view.findViewById(android.R.id.text1);
-        textView.setText(itemText);
-
-        return view;
-    }
 
 
 }

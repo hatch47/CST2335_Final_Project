@@ -43,7 +43,7 @@
     <string name="url">URL: </string>
 
     <string name="what_to_do_browse">Click on 3 lines in the top left corner to open the navigation menu. Long click to save to favourites.</string>
-    <string name="what_to_do_fav">Click on 3 lines in the top left corner to open the navigation menu. Long click to remove from favourites.</string>
+    <string name="what_to_do_fav">Click on 3 lines in the top left corner to open the navigation menu. Click on the item in the list to open the link. Long click to remove from favourites.</string>
     <string name="stf">Save to Favourites</string>
     <string name="addtofav">Added to Favourites</string>
     <string name="remfromfav">Removed from Favourites</string>

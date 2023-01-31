@@ -121,22 +121,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         databaseHelper = new DatabaseHelper(this);
         listView = (ListView) findViewById(R.id.list_view);
 
-        list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i,long l) {
-                String fav = getString(R.string.addtofav);
-
-                // get the selected item
-                String selectedItem = (String) adapterView.getItemAtPosition(i);
-                Log.d("logging ", selectedItem);
-//                String urlSelected = (String) adapterView.getItemAtPosition(i);
-                databaseHelper.insertData(selectedItem);
-                Toast.makeText(MainActivity.this, fav, Toast.LENGTH_SHORT).show();
-
-                return true;
-            }
-        });
+//        list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i,long l) {
+//                String fav = getString(R.string.addtofav);
+//
+//                // get the selected item
+//                String selectedItem = (String) adapterView.getItemAtPosition(i);
+//                Log.d("logging ", selectedItem);
+////                String urlSelected = (String) adapterView.getItemAtPosition(i);
+//                databaseHelper.insertData(selectedItem);
+//                Toast.makeText(MainActivity.this, fav, Toast.LENGTH_SHORT).show();
+//
+//                return true;
+//            }
+//        });
 
 
         //testing new
@@ -298,7 +298,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
             //just added
+            theList.setOnItemLongClickListener((list, item, position, id) -> {
+                String fav = getString(R.string.addtofav);
 
+                // get the selected item
+                String selectedItem = (String) webTitles.get(position) + "\n URL: " + webUrls.get(position);
+//                String selectedItem = (String) webUrls.get(position);
+
+                Log.d("logging ", selectedItem);
+//                String urlSelected = (String) adapterView.getItemAtPosition(i);
+                databaseHelper.insertData(selectedItem);
+                Toast.makeText(MainActivity.this, fav, Toast.LENGTH_SHORT).show();
+
+
+                return true;
+            });
 
 
 

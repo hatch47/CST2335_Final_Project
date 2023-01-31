@@ -10,18 +10,27 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Favourites extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -65,18 +74,36 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
         urlList = new ArrayList<>();
 
         //semi-working
-        // retrieve data from the database
+        // retrieve data from the database //temp commented out
         Cursor cursor = databaseHelper.getData();
         while (cursor.moveToNext()) {
             urlList.add(cursor.getString(0));
         }
 
-        // set the adapter for the ListView
+        // set the adapter for the ListView // temperary commented out
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, urlList);
         listView.setAdapter(adapter);
 
-        //testing new
-//
+
+        //to make listview clickable for url
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = urlList.get(position);
+                String[] parts = selectedItem.split("URL: ");
+                String selectedURL = parts[1].trim();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(selectedURL));
+                startActivity(browserIntent);
+            }
+        });
+
+
+
+
+
+
+
+
 
 
 
@@ -94,6 +121,14 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
                 return true;
             }
         });
+
+
+
+        //to make url
+
+
+
+
 
 
         //testing fav button
@@ -189,3 +224,4 @@ public class Favourites extends AppCompatActivity implements NavigationView.OnNa
     }
 
 }
+
